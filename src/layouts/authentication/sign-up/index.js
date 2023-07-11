@@ -48,7 +48,7 @@ function Cover() {
           textAlign="center"
         >
           <MDTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-            Join us today
+            Welcome to MisterVoiture!
           </MDTypography>
           <MDTypography display="block" variant="button" color="white" my={1}>
             Enter your email and password to register
@@ -77,7 +77,7 @@ function Cover() {
               </MDTypography>
               <MDTypography
                 component="a"
-                href="#"
+                href="https://www.creative-tim.com/license"
                 variant="button"
                 fontWeight="bold"
                 color="info"
