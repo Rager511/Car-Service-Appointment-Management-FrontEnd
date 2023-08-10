@@ -2,7 +2,7 @@
 /* eslint-disable react/function-component-definition */
 /**
 =========================================================
-* Material Dashboard 2 React - v2.2.0
+* MisterVoiture - v2.2.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -23,17 +23,17 @@ import MDAvatar from "components/MDAvatar";
 import MDProgress from "components/MDProgress";
 
 // Images
-import logoXD from "assets/images/small-logos/logo-xd.svg";
 import logoAtlassian from "assets/images/small-logos/logo-atlassian.svg";
 import logoSlack from "assets/images/small-logos/logo-slack.svg";
 import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
 import logoJira from "assets/images/small-logos/logo-jira.svg";
 import logoInvesion from "assets/images/small-logos/logo-invision.svg";
-import team1 from "assets/images/team-1.jpg";
-import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
-import team4 from "assets/images/team-4.jpg";
-
+import BruceMars from "assets/images/bruce-mars.jpg";
+import IvanaSQ from "assets/images/ivana-square.jpg";
+import Kal from "assets/images/kal-visuals-square.jpg";
+import t2 from "assets/images/team-2.jpg";
+import t4 from "assets/images/team-4.jpg";
+import t5 from "assets/images/pexels-andrea-piacquadio-3807277.jpg";
 export default function data() {
   const avatars = (members) =>
     members.map(([image, name]) => (
@@ -60,7 +60,7 @@ export default function data() {
       </Tooltip>
     ));
 
-  const Company = ({ image, name }) => (
+  const Mechanic = ({ image, name }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDAvatar src={image} name={name} size="sm" />
       <MDTypography variant="button" fontWeight="medium" ml={1} lineHeight={1}>
@@ -71,23 +71,24 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "companies", accessor: "companies", width: "45%", align: "left" },
-      { Header: "members", accessor: "members", width: "10%", align: "left" },
-      { Header: "budget", accessor: "budget", align: "center" },
-      { Header: "completion", accessor: "completion", align: "center" },
+      { Header: "Mechanics", accessor: "mechanics", width: "45%", align: "left" },
+      { Header: "Available", accessor: "available", align: "left" },
+      { Header: "Rating", accessor: "rating", width: "10%", align: "center" },
+      { Header: "Budget", accessor: "budget", align: "center" },
+      { Header: "Completion", accessor: "completion", align: "center" },
     ],
 
     rows: [
       {
-        companies: <Company image={logoXD} name="Material UI XD Version" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team2, "Romina Hadid"],
-              [team3, "Alexander Smith"],
-              [team4, "Jessica Doe"],
-            ])}
+        mechanics: <Mechanic image={BruceMars} name="Mohamed" />,
+        available: (
+          <MDTypography variant="caption" color="success" fontWeight="medium">
+            Yes
+          </MDTypography>
+        ),
+        rating: (
+          <MDBox width="8rem" textAlign="left">
+            <MDProgress value={60} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
         budget: (
@@ -102,13 +103,15 @@ export default function data() {
         ),
       },
       {
-        companies: <Company image={logoAtlassian} name="Add Progress Track" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team2, "Romina Hadid"],
-              [team4, "Jessica Doe"],
-            ])}
+        mechanics: <Mechanic image={IvanaSQ} name="Ali" />,
+        available: (
+          <MDTypography variant="caption" color="success" fontWeight="medium">
+            Yes
+          </MDTypography>
+        ),
+        rating: (
+          <MDBox width="8rem" textAlign="left">
+            <MDProgress value={60} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
         budget: (
@@ -123,18 +126,20 @@ export default function data() {
         ),
       },
       {
-        companies: <Company image={logoSlack} name="Fix Platform Errors" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team3, "Alexander Smith"],
-            ])}
+        mechanics: <Mechanic image={Kal} name="Said" />,
+        available: (
+          <MDTypography variant="caption" color="error" fontWeight="medium">
+            No
+          </MDTypography>
+        ),
+        rating: (
+          <MDBox width="8rem" textAlign="left">
+            <MDProgress value={60} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
         budget: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            Not set
+            $49,000
           </MDTypography>
         ),
         completion: (
@@ -144,15 +149,15 @@ export default function data() {
         ),
       },
       {
-        companies: <Company image={logoSpotify} name="Launch our Mobile App" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team4, "Jessica Doe"],
-              [team3, "Alexander Smith"],
-              [team2, "Romina Hadid"],
-              [team1, "Ryan Tompson"],
-            ])}
+        mechanics: <Mechanic image={t2} name="Youssef" />,
+        available: (
+          <MDTypography variant="caption" color="success" fontWeight="medium">
+            Yes
+          </MDTypography>
+        ),
+        rating: (
+          <MDBox width="8rem" textAlign="left">
+            <MDProgress value={60} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
         budget: (
@@ -167,10 +172,15 @@ export default function data() {
         ),
       },
       {
-        companies: <Company image={logoJira} name="Add the New Pricing Page" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([[team4, "Jessica Doe"]])}
+        mechanics: <Mechanic image={t4} name="Anas" />,
+        available: (
+          <MDTypography variant="caption" color="error" fontWeight="medium">
+            No
+          </MDTypography>
+        ),
+        rating: (
+          <MDBox width="8rem" textAlign="left">
+            <MDProgress value={60} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
         budget: (
@@ -185,13 +195,15 @@ export default function data() {
         ),
       },
       {
-        companies: <Company image={logoInvesion} name="Redesign New Online Shop" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team4, "Jessica Doe"],
-            ])}
+        mechanics: <Mechanic image={t5} name="Hamza" />,
+        available: (
+          <MDTypography variant="caption" color="success" fontWeight="medium">
+            Yes
+          </MDTypography>
+        ),
+        rating: (
+          <MDBox width="8rem" textAlign="left">
+            <MDProgress value={60} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
         budget: (

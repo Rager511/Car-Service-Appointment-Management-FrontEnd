@@ -1,38 +1,62 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// react-router-dom components
+import React from "react";
 import { Link } from "react-router-dom";
-
-// @mui material components
+import { useFormik } from "formik"; // Import Formik
+import toast from "react-hot-toast"; // Import toast
+import * as Yup from "yup"; // Import Yup for validation
 import Card from "@mui/material/Card";
 import Checkbox from "@mui/material/Checkbox";
-
-// Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
-
-// Authentication layout components
 import CoverLayout from "layouts/authentication/components/CoverLayout";
-
-// Images
 import bgImage from "assets/images/bg-sign-up-cover.jpeg";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Cover() {
+  const navigate = useNavigate();
+  const initialValues = {
+    name: "",
+    email: "",
+    password: "",
+    age: "",
+    phone: "",
+    terms: false,
+  };
+
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Required"),
+    email: Yup.string().email("Invalid email address").required("Required"),
+    password: Yup.string()
+      .min(8, "Password should be at least 8 characters long")
+      .required("Required"),
+    age: Yup.number().required("Required"),
+    phone: Yup.string().required("Required"),
+    terms: Yup.boolean().oneOf([true], "You must accept the Terms and Conditions"),
+  });
+
+  const handleSubmit = async (values) => {
+    try {
+      // Perform form validation using Yup
+      await validationSchema.validate(values);
+      await axios.post("http://localhost:8080/auth/register-admin", values);
+      // Show success toast message
+      toast.success("Sign-up successful!");
+      // Navigate to sign-in page
+      navigate("/authentication/sign-in");
+    } catch (error) {
+      // Show error toast message
+      toast.error(error.response?.data?.message || "Error occurred!");
+    }
+  };
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: handleSubmit,
+  });
+
   return (
     <CoverLayout image={bgImage}>
       <Card>
@@ -55,18 +79,79 @@ function Cover() {
           </MDTypography>
         </MDBox>
         <MDBox pt={4} pb={3} px={3}>
-          <MDBox component="form" role="form">
+          <MDBox component="form" role="form" onSubmit={formik.handleSubmit}>
             <MDBox mb={2}>
-              <MDInput type="text" label="Name" variant="standard" fullWidth />
+              <MDInput
+                type="text"
+                label="Name"
+                name="name"
+                variant="standard"
+                fullWidth
+                value={formik.values.name}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.name && Boolean(formik.errors.name)}
+                helperText={formik.touched.name && formik.errors.name}
+              />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="email" label="Email" variant="standard" fullWidth />
+              <MDInput
+                type="email"
+                label="Email"
+                name="email"
+                variant="standard"
+                fullWidth
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+              />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="password" label="Password" variant="standard" fullWidth />
+              <MDInput
+                type="password"
+                label="Password"
+                name="password"
+                variant="standard"
+                fullWidth
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.password && Boolean(formik.errors.password)}
+                helperText={formik.touched.password && formik.errors.password}
+              />
+            </MDBox>
+            <MDBox mb={2}>
+              <MDInput
+                type="number" // Assuming "age" is a numeric value
+                label="Age"
+                name="age"
+                variant="standard"
+                fullWidth
+                value={formik.values.age}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.age && Boolean(formik.errors.age)}
+                helperText={formik.touched.age && formik.errors.age}
+              />
+            </MDBox>
+            <MDBox mb={2}>
+              <MDInput
+                type="tel" // Assuming "phone" is a phone number
+                label="Phone"
+                name="phone"
+                variant="standard"
+                fullWidth
+                value={formik.values.phone}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.phone && Boolean(formik.errors.phone)}
+                helperText={formik.touched.phone && formik.errors.phone}
+              />
             </MDBox>
             <MDBox display="flex" alignItems="center" ml={-1}>
-              <Checkbox />
+              <Checkbox name="terms" checked={formik.values.terms} onChange={formik.handleChange} />
               <MDTypography
                 variant="button"
                 fontWeight="regular"
@@ -87,8 +172,8 @@ function Cover() {
               </MDTypography>
             </MDBox>
             <MDBox mt={4} mb={1}>
-              <MDButton variant="gradient" color="info" fullWidth>
-                sign in
+              <MDButton variant="gradient" color="info" fullWidth type="submit">
+                Sign Up
               </MDButton>
             </MDBox>
             <MDBox mt={3} mb={1} textAlign="center">

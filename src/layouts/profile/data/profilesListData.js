@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.2.0
+* MisterVoiture - v2.2.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -29,7 +29,6 @@ export default [
       type: "internal",
       route: "/pages/profile/profile-overview",
       color: "info",
-      label: "reply",
     },
   },
   {
@@ -40,7 +39,6 @@ export default [
       type: "internal",
       route: "/pages/profile/profile-overview",
       color: "info",
-      label: "reply",
     },
   },
   {
@@ -51,7 +49,6 @@ export default [
       type: "internal",
       route: "/pages/profile/profile-overview",
       color: "info",
-      label: "reply",
     },
   },
   {
@@ -62,7 +59,6 @@ export default [
       type: "internal",
       route: "/pages/profile/profile-overview",
       color: "info",
-      label: "reply",
     },
   },
   {
@@ -73,7 +69,6 @@ export default [
       type: "internal",
       route: "/pages/profile/profile-overview",
       color: "info",
-      label: "reply",
     },
   },
 ];

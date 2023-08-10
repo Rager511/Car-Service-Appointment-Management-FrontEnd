@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.2.0
+* MisterVoiture - v2.2.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -29,7 +29,7 @@ import Icon from "@mui/material/Icon";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 
-// Material Dashboard 2 React components
+// MisterVoiture components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
@@ -37,7 +37,7 @@ import MDButton from "components/MDButton";
 // Custom styles for the Configurator
 import ConfiguratorRoot from "examples/Configurator/ConfiguratorRoot";
 
-// Material Dashboard 2 React context
+// MisterVoiture context
 import {
   useMaterialUIController,
   setOpenConfigurator,
@@ -49,6 +49,7 @@ import {
 } from "context";
 
 function Configurator() {
+  const [starCount, setStarCount] = useState(0);
   const [controller, dispatch] = useMaterialUIController();
   const {
     openConfigurator,
@@ -60,7 +61,9 @@ function Configurator() {
   } = controller;
   const [disabled, setDisabled] = useState(false);
   const sidenavColors = ["primary", "dark", "info", "success", "warning", "error"];
-
+  const handleStarClick = () => {
+    setStarCount(starCount + 1);
+  };
   // Use the useEffect hook to change the button state for the sidenav type based on window size.
   useEffect(() => {
     // A function that sets the disabled state of the buttons for the sidenav type.
@@ -138,7 +141,7 @@ function Configurator() {
         px={3}
       >
         <MDBox>
-          <MDTypography variant="h5">Material UI Configurator</MDTypography>
+          <MDTypography variant="h5">Dashboard Configurator</MDTypography>
           <MDTypography variant="body2" color="text">
             See our dashboard options.
           </MDTypography>
@@ -285,28 +288,16 @@ function Configurator() {
           <Switch checked={darkMode} onChange={handleDarkMode} />
         </MDBox>
         <Divider />
-        <MDBox mt={3} mb={2}>
-          <MDButton
-            component={Link}
-            href="https://www.creative-tim.com/learning-lab/react/quick-start/material-dashboard/"
-            target="_blank"
-            rel="noreferrer"
-            color={darkMode ? "light" : "dark"}
-            variant="outlined"
-            fullWidth
-          >
-            view documentation
-          </MDButton>
-        </MDBox>
         <MDBox display="flex" justifyContent="center">
           <GitHubButton
-            href="https://github.com/creativetimofficial/material-dashboard-react"
+            //href="https://github.com/creativetimofficial/material-dashboard-react"
             data-icon="octicon-star"
             data-size="large"
             data-show-count="true"
             aria-label="Star creativetimofficial/material-dashboard-react on GitHub"
+            onClick={handleStarClick}
           >
-            Star
+            Star {starCount}
           </GitHubButton>
         </MDBox>
         <MDBox mt={2} textAlign="center">
@@ -318,7 +309,7 @@ function Configurator() {
             <MDBox mr={1.5}>
               <MDButton
                 component={Link}
-                href="//twitter.com/intent/tweet?text=Check%20Material%20Dashboard%20React%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23react%20%mui&url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fmaterial-dashboard-react"
+                href="https://twitter.com/i/flow/login?redirect_after_login=%2F%3Flang%3Dfr"
                 target="_blank"
                 rel="noreferrer"
                 color="dark"
@@ -329,7 +320,7 @@ function Configurator() {
             </MDBox>
             <MDButton
               component={Link}
-              href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-dashboard-react"
+              href="https://www.facebook.com/?stype=lo&jlou=AfffsAE3l7Pas4iaKDIdlAhlpsMpFGt7rwcF60yuwyP6sj560iYFUQA0sHW35aoNlWj2KTOe5XZbnxmdB0sQo3cM12VCYsnaRJ9-hoBvat_p9g&smuh=54381&lh=Ac8hfuvWKw3VhtJx47M"
               target="_blank"
               rel="noreferrer"
               color="dark"

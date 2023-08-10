@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.2.0
+* MisterVoiture - v2.2.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -16,7 +16,7 @@ Coded by www.creative-tim.com
 // @mui material components
 import Card from "@mui/material/Card";
 
-// Material Dashboard 2 React components
+// MisterVoiture components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
@@ -35,21 +35,21 @@ function BillingInformation() {
         <MDBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
           <Bill
             name="oliver liam"
-            company="viking burrito"
+            address="84 Street, City, State 24813"
             email="oliver@burrito.com"
-            vat="FRB1235476"
+            tel="+212660108306"
           />
           <Bill
             name="lucas harper"
-            company="stone tech zone"
+            address="84 Street, City, State 24815"
             email="lucas@stone-tech.com"
-            vat="FRB1235476"
+            tel="+212660108309"
           />
           <Bill
             name="ethan james"
-            company="fiber notion"
+            address="fiber notional, City, State 24817"
             email="ethan@fiber.com"
-            vat="FRB1235476"
+            tel="+212660108312"
             noGutter
           />
         </MDBox>

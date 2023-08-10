@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.2.0
+* MisterVoiture - v2.2.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -19,15 +19,15 @@ import PropTypes from "prop-types";
 // @mui material components
 import Icon from "@mui/material/Icon";
 
-// Material Dashboard 2 React components
+// MisterVoiture components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
 
-// Material Dashboard 2 React context
+// MisterVoiture context
 import { useMaterialUIController } from "context";
 
-function Bill({ name, company, email, vat, noGutter }) {
+function Bill({ name, address, email, tel, noGutter }) {
   const [controller] = useMaterialUIController();
   const { darkMode } = controller;
 
@@ -68,9 +68,9 @@ function Bill({ name, company, email, vat, noGutter }) {
         </MDBox>
         <MDBox mb={1} lineHeight={0}>
           <MDTypography variant="caption" color="text">
-            Company Name:&nbsp;&nbsp;&nbsp;
+            Address:&nbsp;&nbsp;&nbsp;
             <MDTypography variant="caption" fontWeight="medium" textTransform="capitalize">
-              {company}
+              {address}
             </MDTypography>
           </MDTypography>
         </MDBox>
@@ -83,9 +83,9 @@ function Bill({ name, company, email, vat, noGutter }) {
           </MDTypography>
         </MDBox>
         <MDTypography variant="caption" color="text">
-          VAT Number:&nbsp;&nbsp;&nbsp;
+          Phone number:&nbsp;&nbsp;&nbsp;
           <MDTypography variant="caption" fontWeight="medium">
-            {vat}
+            {tel}
           </MDTypography>
         </MDTypography>
       </MDBox>
@@ -101,9 +101,9 @@ Bill.defaultProps = {
 // Typechecking props for the Bill
 Bill.propTypes = {
   name: PropTypes.string.isRequired,
-  company: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  vat: PropTypes.string.isRequired,
+  tel: PropTypes.string.isRequired,
   noGutter: PropTypes.bool,
 };
 
